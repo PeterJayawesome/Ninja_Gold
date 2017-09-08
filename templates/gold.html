@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ninja Money</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/gold.css')}}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="{{url_for('static',filename='js/gold.js')}}" ></script>
+</head>
+<body>
+	<div>
+		<label>You Gold:</label>
+		<p id = 'gold'>{{session['gold']}}</p>
+	</div>
+	
+	<div class = 'form'>
+		<h4>Farm</h4>
+		<p>(earns 10-20 golds)</p>
+		<form action="/process_money" method="post">
+			<input type="hidden" name="building" value="farm" />
+			<input type="submit" value="Find Gold!"/>
+		</form>
+	</div>
+	<div class = 'form'>
+		<h4>Cave</h4>
+		<p>(earns 5-10 golds)</p>
+		<form action="/process_money" method="post">
+			<input type="hidden" name="building" value="cave" />
+			<input type="submit" value="Find Gold!"/>
+		</form>
+	</div>
+	<div class = 'form'>
+		<h4>House</h4>
+		<p>(earns 2-5 golds)</p>
+		<form action="/process_money" method="post">
+			<input type="hidden" name="building" value="house" />
+			<input type="submit" value="Find Gold!"/>
+		</form>
+	</div>
+	<div class = 'form'>
+		<h4>Casino</h4>
+		<p>(earns/takes 0-50 golds)</p>
+		<form action="/process_money" method="post">
+			<input type="hidden" name="building" value="casino" />
+			<input type="submit" value="Find Gold!"/>
+		</form>
+	</div>
+	<p>Activities:</p>
+	<div id='activity'>
+		{% for activity in session['activity'] %}
+		<p>{{activity}}</p>
+		{% endfor %}
+	</div>
+	
+</body>
+</html>
